@@ -1,16 +1,23 @@
 {
   "name": "data-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "mytaxiServer",
   "main": "server.js",
   "scripts": {
+    "client": "cd .. && cd FE && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Leonard Koch",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^4.1.0",
     "cors": "^2.8.1",
     "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
   }
 }
