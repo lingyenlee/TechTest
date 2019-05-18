@@ -1,10 +1,13 @@
 import React from 'react';
+import MapBox from "./components/MapBox"
 
 
 function App() {
   return (
+    
     <div className="App">
-      test 1
+    
+      <MapBox />
     </div>
   );
 }
