@@ -1,0 +1,22 @@
+body {
+    background-image: url("../../assets/landing_background.jpg");
+    background-size: cover;
+    width: 100%;
+    background-repeat: no-repeat;
+}
+
+
+.row {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.logo-container img {
+    height: 200px;
+    padding: 0px;
+    margin: 0px;
+}
