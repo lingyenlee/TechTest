@@ -1,0 +1,68 @@
+/* ------------ styling for myTaxiMap component ------------------*/
+.stickyContainer {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.greenCar img {
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+    margin: 0px;
+    background-color: green;
+}
+
+.greenCar,
+.redCar {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.redCar img {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    padding: 2px;
+    margin: 0px;
+}
+
+button {
+    padding: 0px;
+    border-width: 0px;
+    border-style: none;
+}
+
+/* -----------Styling for MyTaxi (index) component ---------------- */
+
+.myTaxiContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px
+}
+
+
+/* -----------Styling for MyTaxiCard component --------------- */
+.cardBody {
+    width: 200px;
+    height: 100px;
+    box-shadow: 0 10px 35px rgba(50, 50, 93, 0.1), 0 2px 15px rgba(0, 0, 0, 0.07);
+    margin-bottom: 10px;
+}
+
+
+.carStateBox {
+    text-align: center;
+}
+
+.carStateBox img {
+    width: 70px;
+    height: 70px;
+}
+
+.carID {
+    text-align: center;
+    padding-top: 10px;
+}

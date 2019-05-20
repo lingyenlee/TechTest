@@ -1,0 +1,13 @@
+.navLogoContainer img {
+    height: 40px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+}
