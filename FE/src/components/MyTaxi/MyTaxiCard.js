@@ -1,34 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./myTaxi.css"
 import redTaxi from "../../assets/redCar.png"
 import greenTaxi from "../../assets/greenCar.png"
+import { MyTaxiContext } from "./index"
+
 
 //Child component of MyTaxi component
-const MyTaxiCard = ({ myTaxiData }) => {
+export const MyTaxiCard = () => {
+
+    const [vehicles, setVehicles] = useContext(MyTaxiContext)
 
     return (
-        <div className="cardContainer">
+        <div className="cardContainer" >
+
             {
-                myTaxiData.map(car =>
-                    <div className="myTaxiCardBody">
-                        <div className="myTaxiCardText">
-                            <p>{car.state === "ACTIVE" ? "ACTIVE" : "INACTIVE"}</p>
+                vehicles.map(vehicle =>
+                    <div className="myTaxiCardBody" key={vehicle.id} >
+                        <div className="myTaxiCardText" >
+                            <p>{vehicle.state === "ACTIVE" ? "ACTIVE" : "INACTIVE"}</p>
                             <p className="carID">Taxi Id</p>
-                            <span>{car.id}</span>
-                            <div className="myTaxiStateBox">
+                            <span>{vehicle.id}</span>
+                            <div className="myTaxiStateBox" >
                                 {/* show green color car if car state is ACTIVE */}
-                                {car.state === "ACTIVE" && <img src={greenTaxi} alt="greencar" />}
+                                {vehicle.state === "ACTIVE" && <img src={greenTaxi} alt="greencar" />}
                                 {/* show red color car if car state is INACTIVE*/}
-                                {car.state === "INACTIVE" && <img src={redTaxi} alt="redcar" />}
+                                {vehicle.state === "INACTIVE" && <img src={redTaxi} alt="redcar" />}
 
                             </div>
                         </div>
+
                     </div>
                 )
             }
+
         </div>
     );
 }
-
-
-export default MyTaxiCard;

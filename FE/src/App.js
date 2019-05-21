@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route } from "react-router-dom"
 import LandingPage from "./components/LandingPage"
 import Car2Go from "./components/Car2Go"
-import MyTaxi from "./components/MyTaxi"
+import { MyTaxi } from "./components/MyTaxi"
 
 function App() {
   return (

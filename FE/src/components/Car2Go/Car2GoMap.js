@@ -53,7 +53,7 @@ const Car2GoMap = ({ car2goData }) => {
                         >
                             <div className="popUpText">
                                 <p className="carLocationIcon">
-                                    <i class="material-icons">
+                                    <i className="material-icons">
                                         location_on
                             </i>
                                     <p>{selectedCar.address}</p>

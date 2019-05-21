@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import ReactMapGL, { Marker } from "react-map-gl";
 import mytaxiIcon from "../../assets/myTaxi.jpg"
 import "./myTaxi.css"
 
 //Child component of MyTaxi component
-const MyTaxiMap = ({ myTaxiData }) => {
+export const MyTaxiMap = ({ myTaxiData }) => {
 
     //set initial state of map
     const [viewport, setViewport] = useState({
@@ -28,7 +28,9 @@ const MyTaxiMap = ({ myTaxiData }) => {
     </div>)
 
     return (
-        <div className="mapContainer">
+
+        < div className="mapContainer" >
+
             <div className="stickyContainer">
                 <ReactMapGL
                     {...viewport}
@@ -38,22 +40,22 @@ const MyTaxiMap = ({ myTaxiData }) => {
                         setViewport(viewport)
                     }}>
                     {
-                        myTaxiData.map(car =>
-                            <Marker key={car.id}
-                                latitude={car.coordinate.latitude}
-                                longitude={car.coordinate.longitude}>
+                        myTaxiData.map(vehicle =>
+                            <Marker key={vehicle.id}
+                                latitude={vehicle.coordinate.latitude}
+                                longitude={vehicle.coordinate.longitude}>
                                 {/* show color border according to state of car */}
-                                {car.state === "ACTIVE" ? activeCar : inactiveCar}
+                                {vehicle.state === "ACTIVE" ? activeCar : inactiveCar}
                             </Marker>
                         )
                     }
                 </ReactMapGL>
             </div>
-        </div>
+        </div >
 
     )
 }
 
-export default MyTaxiMap;
+
 
 
