@@ -1,21 +1,28 @@
 /* -------------- Styling for Car2GoMap -------------- */
-
-.vehicle-icon img {
+.car2goIcon img {
     width: 20px;
     height: 20px;
     padding: 0px;
     margin: 0px;
 }
 
-.vehicle-icon {
+.carLicenseIcon {
+    text-align: center;
+}
+
+.carLicenseIcon img {
+    width: 60px;
+    height: 30px;
     padding: 0px;
     margin: 0px;
 }
 
-button {
-    padding: 0px;
-    border-width: 0px;
-    border-style: none;
+.popUpText p {
+    padding: 5px 0px;
+    margin: 0px;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 11px;
+    text-align: center;
 }
 
 /* -----------Styling for Car2Go (index) component ---------------- */
@@ -30,23 +37,21 @@ button {
 
 /* -----------Styling for Car2GoCard component --------------- */
 .car2GoCardBody {
-    width: 200px;
-    height: 200px;
+    width: 270px;
+    height: auto;
     box-shadow: 0 10px 35px rgba(50, 50, 93, 0.1), 0 2px 15px rgba(0, 0, 0, 0.07);
     margin-bottom: 10px;
 }
 
-
-.car2GoStateBox {
+.car2GoCardText {
     text-align: center;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 11px;
+    padding: 5px 0px;
 }
 
-.car2GoStateBox img {
-    width: 70px;
-    height: 70px;
-}
-
-.car2GoID {
-    text-align: center;
-    padding-top: 10px;
+.car2GoCardText p {
+    margin: 0px;
+    padding: 5px 0px;
+    font-weight: bold;
 }

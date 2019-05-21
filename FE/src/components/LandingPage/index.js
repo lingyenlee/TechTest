@@ -8,18 +8,18 @@ import car2goLogo from "../../assets/car2go_logo.svg"
 const LandingPage = () => {
 
     return (
-        <div className="container">
-            <div className="landing-text">
-                <h1>Find your ride</h1>
+        <div className="landingPageContainer">
+            <div className="landingText">
+                <span>Find your ride</span>
             </div>
-            <div className="row">
+            <div className="landingRow">
                 <Link to="/mytaxi" >
-                    <div className="logo-container">
+                    <div className="landingLogoContainer">
                         <img src={myTaxiLogo} alt="Logo of myTaxi" />
                     </div>
                 </Link>
                 <Link to="/car2go" >
-                    <div className="logo-container">
+                    <div className="landingLogoContainer">
                         <img src={car2goLogo} alt="Logo of car2go" />
                     </div>
                 </Link>

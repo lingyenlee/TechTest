@@ -1,18 +1,19 @@
-.container {
+.landingPageContainer {
     background-image: url("../../assets/landing_background.jpg");
     background-size: cover;
     width: 100%;
-    height: 750px;
+    height: 720px;
     background-repeat: no-repeat;
 }
 
-.landing-text {
+.landingText {
     color: white;
     text-align: center;
-    padding: 50px 0px;
+    font-size: 100px;
+    padding: 50px;
 }
 
-.row {
+.landingRow {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -20,9 +21,8 @@
     justify-content: space-evenly;
 }
 
-.logo-container img {
+.landingLogoContainer img {
     height: 200px;
     padding: 0px;
     margin: 0px;
-
 }

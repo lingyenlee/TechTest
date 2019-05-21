@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactMapGL, { Marker } from "react-map-gl";
-import mytaxiIcon from "../../assets/taxi2.jpg"
+import mytaxiIcon from "../../assets/myTaxi.jpg"
 import "./myTaxi.css"
 
 //Child component of MyTaxi component

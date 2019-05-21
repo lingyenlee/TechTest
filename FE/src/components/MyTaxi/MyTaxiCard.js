@@ -10,15 +10,18 @@ const MyTaxiCard = ({ myTaxiData }) => {
         <div className="cardContainer">
             {
                 myTaxiData.map(car =>
-                    <div className="cardBody">
-                        <div className="carID">
-                            <span>Taxi Id: {car.id}</span>
-                        </div>
-                        <div className="carStateBox">
-                            {/* show green color car if car state is ACTIVE */}
-                            {car.state === "ACTIVE" && <img src={greenTaxi} alt="greencar" />}
-                            {/* show red color car if car state is INACTIVE*/}
-                            {car.state === "INACTIVE" && <img src={redTaxi} alt="redcar" />}
+                    <div className="myTaxiCardBody">
+                        <div className="myTaxiCardText">
+                            <p>{car.state === "ACTIVE" ? "ACTIVE" : "INACTIVE"}</p>
+                            <p className="carID">Taxi Id</p>
+                            <span>{car.id}</span>
+                            <div className="myTaxiStateBox">
+                                {/* show green color car if car state is ACTIVE */}
+                                {car.state === "ACTIVE" && <img src={greenTaxi} alt="greencar" />}
+                                {/* show red color car if car state is INACTIVE*/}
+                                {car.state === "INACTIVE" && <img src={redTaxi} alt="redcar" />}
+
+                            </div>
                         </div>
                     </div>
                 )
