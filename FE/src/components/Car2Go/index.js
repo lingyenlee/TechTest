@@ -1,34 +1,14 @@
-import React, { useState, useEffect } from "react";
-import Car2GoMap from "./Car2GoMap";
-import NavBar from "../NavBar"
-import Car2GoCard from "./Car2GoCard"
+import React from "react";
+import { NavBar } from "../NavBar"
+import { Car2GoCard } from "./Car2GoCard"
+import { Car2GoStore } from "./Car2GoStore"
 
-const Car2Go = () => {
-
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        fetchData()
-    }, [])
-
-    async function fetchData() {
-        const response = await fetch("/car2go/vehicles")
-        const carData = await response.json();
-        setData(carData.placemarks)
-
-    }
-
+export const Car2GoContainer = () => {
     return (
-        <div>
+        <Car2GoStore>
             <NavBar />
-            <div className="car2GoContainer">
-                <Car2GoMap car2goData={data} />
-                <Car2GoCard car2goData={data} />
-            </div>
-
-        </div>
+            <Car2GoCard />
+        </Car2GoStore>
     )
 }
-
-export default Car2Go;
 

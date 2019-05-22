@@ -4,28 +4,30 @@ import myTaxiLogo from "../../assets/mytaxi_logo.png"
 import car2goLogo from "../../assets/car2go_logo.svg"
 import "./navBar.css"
 
-
-const NavBar = () => {
+export const NavBar = () => {
     return (
-        // <div className="navBarContainer">
         <div className="navBar">
             <div className="row">
-                <Link to="/mytaxi" >
-                    <div className="navLogoContainer">
-                        <img src={myTaxiLogo} alt="Logo of myTaxi" />
+                <div className="navLogoContainer">
+                    <div className="navLogo">
+                        <Link to="/mytaxi" >
+                            <img src={myTaxiLogo} alt="Logo of myTaxi" />
+                        </Link>
                     </div>
-                </Link>
-                <Link to="/car2go" >
-                    <div className="navLogoContainer">
-                        <img src={car2goLogo} alt="Logo of car2go" />
+                    <div className="navLogo">
+                        <Link to="/car2go" >
+                            <img src={car2goLogo} alt="Logo of car2go" />
+                        </Link>
                     </div>
-                </Link>
+                </div>
+                <div className="homeLogo">
+                    <Link to="/" >
+                        <i className="material-icons homeLink">
+                            home
+                    </i>
+                    </Link>
+                </div>
             </div>
         </div>
-        // </div>
-
-
     )
 }
-
-export default NavBar;

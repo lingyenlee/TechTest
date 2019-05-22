@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import car2goIcon from "../../assets/car2goIcon.png"
 import carLicenseIcon from "../../assets/license-plate.svg"
 import "./car2go.css"
+import { Car2GoContext } from "./Car2GoStore"
 
-const Car2GoMap = ({ car2goData }) => {
+export const Car2GoMap = () => {
+
+    //consume car2go context from store
+    const [vehicles] = useContext(Car2GoContext)
 
     const [selectedCar, setSelectedCar] = useState(null)
 
@@ -26,15 +30,14 @@ const Car2GoMap = ({ car2goData }) => {
                     onViewportChange={viewport => {
                         setViewport(viewport)
                     }}>
-
                     {
-                        car2goData.map(item =>
-                            <Marker key={item.id}
-                                latitude={item.coordinates[1]}
-                                longitude={item.coordinates[0]} >
+                        vehicles.map(vehicle =>
+                            <Marker key={vehicle.id}
+                                latitude={vehicle.coordinates[1]}
+                                longitude={vehicle.coordinates[0]} >
                                 <button className="markerBtn" onClick={e => {
                                     e.preventDefault();
-                                    setSelectedCar(item);
+                                    setSelectedCar(vehicle);
                                 }}>
                                     <div className="car2goIcon">
                                         <img src={car2goIcon} alt="car2go-icon" />
@@ -81,5 +84,3 @@ const Car2GoMap = ({ car2goData }) => {
         </div>
     )
 }
-
-export default Car2GoMap;

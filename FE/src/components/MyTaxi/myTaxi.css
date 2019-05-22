@@ -1,3 +1,14 @@
+/* -----------Styling for MyTaxiContainer Parent component ---------------- */
+
+.myTaxiDataContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 15px;
+    margin-top: 20px;
+}
+
+
 /* ------------ styling for myTaxiMap component ------------------*/
 .stickyContainer {
     position: -webkit-sticky;
@@ -32,15 +43,6 @@ button {
     padding: 0px;
     border-width: 0px;
     border-style: none;
-}
-
-/* -----------Styling for MyTaxi (index) component ---------------- */
-
-.myTaxiContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 10px;
 }
 
 

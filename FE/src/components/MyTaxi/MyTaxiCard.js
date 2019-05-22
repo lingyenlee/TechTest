@@ -1,18 +1,11 @@
-import React, { useContext } from 'react';
-import "./myTaxi.css"
+import React from "react";
 import redTaxi from "../../assets/redCar.png"
 import greenTaxi from "../../assets/greenCar.png"
-import { MyTaxiContext } from "./index"
 
-
-//Child component of MyTaxi component
-export const MyTaxiCard = () => {
-
-    const [vehicles, setVehicles] = useContext(MyTaxiContext)
+export const MyTaxiCard = ({ vehicles }) => {
 
     return (
-        <div className="cardContainer" >
-
+        <div className="myTaxiData">
             {
                 vehicles.map(vehicle =>
                     <div className="myTaxiCardBody" key={vehicle.id} >
@@ -25,14 +18,13 @@ export const MyTaxiCard = () => {
                                 {vehicle.state === "ACTIVE" && <img src={greenTaxi} alt="greencar" />}
                                 {/* show red color car if car state is INACTIVE*/}
                                 {vehicle.state === "INACTIVE" && <img src={redTaxi} alt="redcar" />}
-
                             </div>
                         </div>
-
                     </div>
                 )
             }
-
         </div>
+
     );
+
 }

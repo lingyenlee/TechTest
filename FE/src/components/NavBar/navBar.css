@@ -1,15 +1,21 @@
 .navBar {
     background-color: #222;
     height: 80px;
-}
-
-.stickyContainer {
-    position: -webkit-sticky;
+    z-index: 1000;
+    width: 100%;
     position: sticky;
     top: 0;
 }
 
-.navLogoContainer img {
+.navLogoContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: left;
+}
+
+.navLogo img {
     height: 65px;
     padding: 0px 50px;
     margin: 5px;
@@ -18,7 +24,20 @@
 .row {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: left;
+}
+
+/* 
+.positioned {
+    position: sticky;
+    top: 0px;
+} */
+
+.material-icons.homeLink {
+    font-size: 65px;
+    color: white;
+    margin: 10px 50px;
+}
+
+a:hover {
+    background: grey;
 }

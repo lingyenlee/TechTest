@@ -13,18 +13,20 @@ const LandingPage = () => {
                 <span>Find your ride</span>
             </div>
             <div className="landingRow">
-                <Link to="/mytaxi" >
-                    <div className="landingLogoContainer">
+                <div className="landingLogoContainer">
+                    <Link to="/mytaxi" >
                         <img src={myTaxiLogo} alt="Logo of myTaxi" />
-                    </div>
-                </Link>
-                <Link to="/car2go" >
-                    <div className="landingLogoContainer">
+                    </Link>
+                </div>
+                <div className="landingLogoContainer">
+                    <Link to="/car2go" >
                         <img src={car2goLogo} alt="Logo of car2go" />
-                    </div>
-                </Link>
+                    </Link>
+                </div>
+
             </div>
         </div>
+
     )
 }
 

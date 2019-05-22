@@ -1,10 +1,14 @@
-import React, { useState} from "react";
-import ReactMapGL, { Marker } from "react-map-gl";
+import React, { useState } from "react";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import mytaxiIcon from "../../assets/myTaxi.jpg"
 import "./myTaxi.css"
 
-//Child component of MyTaxi component
-export const MyTaxiMap = ({ myTaxiData }) => {
+
+//Level 2 of MyTaxiConatiner Parent Component (nested in MyTaxiCard component)
+
+export const MyTaxiMap = ({ vehicles }) => {
+
+    const [selectedCar, setSelectedCar] = useState(null)
 
     //set initial state of map
     const [viewport, setViewport] = useState({
@@ -28,30 +32,50 @@ export const MyTaxiMap = ({ myTaxiData }) => {
     </div>)
 
     return (
-
-        < div className="mapContainer" >
-
-            <div className="stickyContainer">
-                <ReactMapGL
-                    {...viewport}
-                    mapboxApiAccessToken="pk.eyJ1IjoieGthMTMzIiwiYSI6ImNqdnRqb3RnNDBjMDE0M3BoYmxjMHdkbjgifQ.-oSCRzQIEqwToXKKx01syA"
-                    mapStyle="mapbox://styles/xka133/cjvtmjxon14j31cq516z44i5v"
-                    onViewportChange={viewport => {
-                        setViewport(viewport)
-                    }}>
-                    {
-                        myTaxiData.map(vehicle =>
-                            <Marker key={vehicle.id}
-                                latitude={vehicle.coordinate.latitude}
-                                longitude={vehicle.coordinate.longitude}>
-                                {/* show color border according to state of car */}
+        <div className="mapContainer">
+            {/* <div className="stickyContainer"> */}
+            <ReactMapGL
+                {...viewport}
+                mapboxApiAccessToken="pk.eyJ1IjoieGthMTMzIiwiYSI6ImNqdnRqb3RnNDBjMDE0M3BoYmxjMHdkbjgifQ.-oSCRzQIEqwToXKKx01syA"
+                mapStyle="mapbox://styles/xka133/cjvtmjxon14j31cq516z44i5v"
+                onViewportChange={viewport => {
+                    setViewport(viewport)
+                }}>
+                {
+                    vehicles.map(vehicle =>
+                        <Marker key={vehicle.id}
+                            latitude={vehicle.coordinate.latitude}
+                            longitude={vehicle.coordinate.longitude}>
+                            {/* show color border according to state of car */}
+                            <button className="markerBtn" onClick={e => {
+                                e.preventDefault();
+                                setSelectedCar(vehicle);
+                            }}>
                                 {vehicle.state === "ACTIVE" ? activeCar : inactiveCar}
-                            </Marker>
-                        )
-                    }
-                </ReactMapGL>
-            </div>
-        </div >
+                            </button>
+                        </Marker>
+                    )
+                }
+                {selectedCar ? (
+                    <Popup
+                        latitude={selectedCar.coordinate.latitude}
+                        longitude={selectedCar.coordinate.longitude}
+                        onClose={() => {
+                            setSelectedCar(null)
+                        }}
+                    >
+                        <div className="popUpText">
+                            <p>Taxi ID: {selectedCar.id}</p>
+                            <p>{selectedCar.state === "ACTIVE" ? "ACTIVE" : "INACTIVE"}</p>
+                        </div>
+                    </Popup>
+                ) : null}
+
+
+            </ReactMapGL>
+
+        </div>
+        // </div >
 
     )
 }
