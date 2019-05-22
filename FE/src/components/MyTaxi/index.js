@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./myTaxi.css"
 import { MyTaxiCard } from "./MyTaxiCard"
 import { VehicleStateSelect } from "./MyTaxiFilter"
@@ -36,24 +36,26 @@ export const MyTaxiContainer = () => {
     return (
         <div>
             <NavBar />
-            <div className="myTaxiDataContainer" >
+            <div className="myTaxiCardContainer" >
                 {/* ----left section showing individual myTaxi data ----------- */}
-                <div className="myTaxiData">
-                    <div>
-                        <VehicleStateSelect
-                            onStateSelect={stateSelectHandler} />
-                    </div>
+                <div className="myTaxiCard">
                     {selectedVehicles.length === 0
                         ? <MyTaxiCard vehicles={vehicles} />
                         : <MyTaxiCard vehicles={selectedVehicles} />}
                 </div>
                 {/* ----------Map showing myTaxi locations ------------- */}
-                <div className="myTaxiMap">
-                    <div className="stickyContainer">
+                <div className="myTaxiMapBox">
+                    <div className="myTaxiSelect">
+                        <VehicleStateSelect
+                            onStateSelect={stateSelectHandler} />
+                    </div>
+                    <div>
                         {selectedVehicles.length === 0
                             ? <MyTaxiMap vehicles={vehicles} />
                             : <MyTaxiMap vehicles={selectedVehicles} />}
                     </div>
+
+
                 </div>
             </div>
         </div>

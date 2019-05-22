@@ -1,19 +1,22 @@
 /* -----------Styling for MyTaxiContainer Parent component ---------------- */
 
-.myTaxiDataContainer {
+.myTaxiCardContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-left: 15px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 
 /* ------------ styling for myTaxiMap component ------------------*/
-.stickyContainer {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
+.myTaxiMapBox {
+    position: fixed;
+    margin-left: 220px;
+}
+
+.myTaxiSelect {
+    padding-bottom: 10px;
 }
 
 .greenCar img {

@@ -16,7 +16,7 @@ export const MyTaxiMap = ({ vehicles }) => {
         longitude: 10.0066,
         zoom: 13,
         width: "80vw",
-        height: "100vh"
+        height: "80vh"
     })
 
     //function to define green border for active car marker in map
