@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import "./myTaxi.css"
 import { MyTaxiCard } from "./MyTaxiCard"
-import { VehicleStateSelect } from "./MyTaxiFilter"
 import { NavBar } from "../NavBar"
 import { MyTaxiMap } from "./MyTaxiMap";
+import { SelectVehicle } from '../SelectVehicle';
 
 //MyTaxiContainer Parent component - has 3 child components
 export const MyTaxiContainer = () => {
@@ -12,6 +12,8 @@ export const MyTaxiContainer = () => {
     const [vehicles, setVehicles] = useState([]);
     const [selectedVehicles, setSelectedVehicles] = useState([])
 
+    //create options for select menu
+    const options = ["ACTIVE", "INACTIVE"]
 
     //call fetch function by useEffect hook
     useEffect(() => {
@@ -46,8 +48,11 @@ export const MyTaxiContainer = () => {
                 {/* ----------Map showing myTaxi locations ------------- */}
                 <div className="myTaxiMapBox">
                     <div className="myTaxiSelect">
-                        <VehicleStateSelect
-                            onStateSelect={stateSelectHandler} />
+                        <SelectVehicle
+                            placeholder={"Availability Status"}
+                            value={selectedVehicles}
+                            options={options}
+                            onChangeSelect={stateSelectHandler} />
                     </div>
                     <div>
                         {selectedVehicles.length === 0

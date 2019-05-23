@@ -1,13 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Car2GoContext } from "./Car2GoStore"
 import { Car2GoMap } from "./Car2GoMap"
 import "./car2go.css";
+import { SelectVehicle } from "../SelectVehicle"
 
 //Level 1 child component of Car2GoComponent - contains Level 2 child component
 export const Car2GoCard = () => {
 
     //consume context from store
     const [vehicles] = useContext(Car2GoContext)
+
+    const options = ["GOOD", "UNACCEPTABLE"]
+
+    const [selectedVehicles, setSelectedVehicles] = useState([])
+
+    const exteriorSelectHandler = e => {
+        e.preventDefault();
+        const vehicleCondition = e.target.value;
+        const filterVehicles = vehicles.filter(vehicle => vehicle.interior === vehicleCondition)
+        setSelectedVehicles(filterVehicles)
+    }
+
 
     return (
         <div className="car2GoCardContainer">
@@ -53,6 +66,14 @@ export const Car2GoCard = () => {
             {/* ----------Map showing car2Go locations ------------- */}
             <div className="car2GoMap">
                 <div className="stickyContainer">
+                    <SelectVehicle
+                        placeholder={"Select Interior State"}
+                        options={options}
+                        value={selectedVehicles}
+                        onStateSelect={exteriorSelectHandler}
+                    >
+
+                    </SelectVehicle>
                     <Car2GoMap />
                 </div>
             </div>
