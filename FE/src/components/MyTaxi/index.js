@@ -4,13 +4,15 @@ import { MyTaxiCard } from "./MyTaxiCard"
 import { NavBar } from "../NavBar"
 import { MyTaxiMap } from "./MyTaxiMap";
 import { SelectVehicle } from '../SelectVehicle';
+import axios from "axios"
 
 //MyTaxiContainer Parent component - has 3 child components
 export const MyTaxiContainer = () => {
 
     //define initial and update states
     const [vehicles, setVehicles] = useState([]);
-    const [selectedVehicles, setSelectedVehicles] = useState([])
+    const [selected, setSelected] = useState([])
+    const [isLoading, setIsLoading] = useState(false);
 
     //create options for select menu
     const options = ["ACTIVE", "INACTIVE"]
@@ -22,9 +24,14 @@ export const MyTaxiContainer = () => {
 
     //function used to fetch data from server API route
     async function fetchData() {
-        const response = await fetch("/mytaxi/vehicles")
-        const carData = await response.json()
-        setVehicles(carData.poiList)
+        setIsLoading(true)
+        try {
+            let result = await axios.get("/mytaxi/vehicles")
+            setVehicles(result.data.poiList)
+            setIsLoading(false)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     //function for handling "active" and "inactive" filter
@@ -32,37 +39,41 @@ export const MyTaxiContainer = () => {
         e.preventDefault();
         const vehicleState = e.target.value;
         const filterVehicles = vehicles.filter(vehicle => vehicle.state === vehicleState)
-        setSelectedVehicles(filterVehicles)
+        setSelected(filterVehicles)
     }
 
-    return (
-        <div>
-            <NavBar />
-            <div className="myTaxiCardContainer" >
-                {/* ----left section showing individual myTaxi data ----------- */}
-                <div className="myTaxiCard">
-                    {selectedVehicles.length === 0
-                        ? <MyTaxiCard vehicles={vehicles} />
-                        : <MyTaxiCard vehicles={selectedVehicles} />}
-                </div>
-                {/* ----------Map showing myTaxi locations ------------- */}
-                <div className="myTaxiMapBox">
-                    <div className="myTaxiSelect">
-                        <SelectVehicle
-                            placeholder={"Availability Status"}
-                            value={selectedVehicles}
-                            options={options}
-                            onChangeSelect={stateSelectHandler} />
-                    </div>
-                    <div>
-                        {selectedVehicles.length === 0
-                            ? <MyTaxiMap vehicles={vehicles} />
-                            : <MyTaxiMap vehicles={selectedVehicles} />}
-                    </div>
+    let content = <p> Loading data.... </p>
 
-
+    if (!isLoading) {
+        content = (
+            <div>
+                <NavBar />
+                <div className="myTaxiCardContainer" >
+                    {/* ----left section showing individual myTaxi data ----------- */}
+                    <div className="myTaxiCard">
+                        {selected.length === 0
+                            ? <MyTaxiCard vehicles={vehicles} />
+                            : <MyTaxiCard vehicles={selected} />}
+                    </div>
+                    <div className="myTaxiMapBox">
+                        {/* --------- dropdown menu ------------- */}
+                        <div className="myTaxiSelect">
+                            <SelectVehicle
+                                title={"Availability Status"}
+                                placeholder={"Choose"}
+                                options={options}
+                                onChangeSelect={stateSelectHandler} />
+                        </div>
+                        {/* ----------Map showing myTaxi locations ------------- */}
+                        <div className="myTaxiMap">
+                            {selected.length === 0
+                                ? <MyTaxiMap vehicles={vehicles} />
+                                : <MyTaxiMap vehicles={selected} />}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        )
+    }
+    return content;
 }

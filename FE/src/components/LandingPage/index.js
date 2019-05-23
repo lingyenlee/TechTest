@@ -4,7 +4,6 @@ import "./landingPage.css"
 import myTaxiLogo from "../../assets/mytaxi_logo.png"
 import car2goLogo from "../../assets/car2go_logo.svg"
 
-
 const LandingPage = () => {
 
     return (

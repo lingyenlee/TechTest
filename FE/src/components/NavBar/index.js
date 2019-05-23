@@ -4,8 +4,10 @@ import myTaxiLogo from "../../assets/mytaxi_logo.png"
 import car2goLogo from "../../assets/car2go_logo.svg"
 import "./navBar.css"
 
+//Level 1 child component of both myTaxiContainer and car2goContainer components
+//reusable component
 export const NavBar = () => {
-    return (
+    let content = (
         <div className="navBar">
             <div className="row">
                 <div className="navLogoContainer">
@@ -30,4 +32,5 @@ export const NavBar = () => {
             </div>
         </div>
     )
+    return content
 }

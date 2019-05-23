@@ -8,8 +8,6 @@
     margin-top: 10px;
 }
 
-
-/* ------------ styling for myTaxiMap component ------------------*/
 .myTaxiMapBox {
     position: fixed;
     margin-left: 220px;
@@ -18,6 +16,8 @@
 .myTaxiSelect {
     padding-bottom: 10px;
 }
+
+/* ------------ styling for myTaxiMap component ------------------*/
 
 .greenCar img {
     width: 20px;

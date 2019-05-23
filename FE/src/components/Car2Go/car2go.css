@@ -1,10 +1,22 @@
-/* -------------- Styling for Car2GoMap -------------- */
-.stickyContainer {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 10;
+/* -----------Styling for Car2GoContainer component ---------------- */
+.car2GoCardContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 15px;
+    margin-top: 10px;
 }
 
+.car2GoMapBox {
+    position: fixed;
+    margin-left: 280px;
+}
+
+.car2GoSelect {
+    padding-bottom: 10px;
+}
+
+/* -------------- Styling for Car2GoMap -------------- */
 .car2goIcon img {
     width: 20px;
     height: 20px;
@@ -12,7 +24,8 @@
     margin: 0px;
 }
 
-.carLicenseIcon {
+.carLicenseIcon,
+.carLocationIcon {
     text-align: center;
 }
 
@@ -30,18 +43,6 @@
     font-size: 11px;
     text-align: center;
 }
-
-/* -----------Styling for Car2GoContainer component ---------------- */
-
-.car2GoCardContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0px;
-    padding-left: 15px;
-    margin-top: 20px;
-}
-
 
 /* -----------Styling for Car2GoCard component --------------- */
 .car2GoCardBody {

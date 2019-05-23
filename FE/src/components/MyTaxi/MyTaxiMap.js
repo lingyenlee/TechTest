@@ -3,10 +3,7 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import mytaxiIcon from "../../assets/myTaxi.jpg"
 import "./myTaxi.css"
 
-
-//Level 2 of MyTaxiConatiner Parent Component (nested in MyTaxiCard component)
-
-export const MyTaxiMap = ({ vehicles }) => {
+export const MyTaxiMap = (props) => {
 
     const [selectedCar, setSelectedCar] = useState(null)
 
@@ -31,9 +28,8 @@ export const MyTaxiMap = ({ vehicles }) => {
         <img src={mytaxiIcon} alt="taxiIcon" />
     </div>)
 
-    return (
+    let content = (
         <div className="mapContainer">
-            {/* <div className="stickyContainer"> */}
             <ReactMapGL
                 {...viewport}
                 mapboxApiAccessToken="pk.eyJ1IjoieGthMTMzIiwiYSI6ImNqdnRqb3RnNDBjMDE0M3BoYmxjMHdkbjgifQ.-oSCRzQIEqwToXKKx01syA"
@@ -42,7 +38,7 @@ export const MyTaxiMap = ({ vehicles }) => {
                     setViewport(viewport)
                 }}>
                 {
-                    vehicles.map(vehicle =>
+                    props.vehicles.map(vehicle =>
                         <Marker key={vehicle.id}
                             latitude={vehicle.coordinate.latitude}
                             longitude={vehicle.coordinate.longitude}>
@@ -70,14 +66,10 @@ export const MyTaxiMap = ({ vehicles }) => {
                         </div>
                     </Popup>
                 ) : null}
-
-
             </ReactMapGL>
-
         </div>
-        // </div >
-
     )
+    return content;
 }
 
 

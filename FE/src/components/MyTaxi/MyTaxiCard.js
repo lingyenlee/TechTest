@@ -2,12 +2,12 @@ import React from "react";
 import redTaxi from "../../assets/redCar.png"
 import greenTaxi from "../../assets/greenCar.png"
 
-export const MyTaxiCard = ({ vehicles }) => {
+export const MyTaxiCard = (props) => {
 
-    return (
+    let content = (
         <div className="myTaxiData">
             {
-                vehicles.map(vehicle =>
+                props.vehicles.map(vehicle =>
                     <div className="myTaxiCardBody" key={vehicle.id} >
                         <div className="myTaxiCardText" >
                             <p>{vehicle.state === "ACTIVE" ? "ACTIVE" : "INACTIVE"}</p>
@@ -24,7 +24,6 @@ export const MyTaxiCard = ({ vehicles }) => {
                 )
             }
         </div>
-
     );
-
+    return content
 }
