@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import "./car2go.css"
-import { NavBar } from "../NavBar"
 import { Car2GoCard } from "./Car2GoCard";
 import { SelectVehicle } from '../SelectVehicle';
 import { Car2GoMap } from "./Car2GoMap"
 import axios from "axios"
 
-//MyTaxiContainer Parent component - has 3 child components
+
+//define async fetch data function and export for testing
+export const fetchCar2GoData = async () => {
+    try {
+        let response = await axios.get("/car2go/vehicles");
+        return response.data.placemarks;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+//MyTaxiContainer Parent component - has 2 child components
 export const Car2GoContainer = () => {
 
     //define initial and update states
@@ -19,15 +30,15 @@ export const Car2GoContainer = () => {
 
     //call fetch function by useEffect hook
     useEffect(() => {
-        fetchData()
+        getData()
     }, [])
 
     //function used to fetch data from backend server API route
-    async function fetchData() {
+    async function getData() {
         setIsLoading(true)
         try {
-            let result = await axios.get("/car2go/vehicles")
-            setVehicles(result.data.placemarks)
+            const result = await fetchCar2GoData();
+            setVehicles(result)
             setIsLoading(false)
         } catch (error) {
             console.log(error)
@@ -38,7 +49,6 @@ export const Car2GoContainer = () => {
     const exteriorSelectHandler = e => {
         e.preventDefault();
         const vehicleCondition = e.target.value;
-
         const filterVehicles = vehicles.filter(vehicle => vehicle.exterior === vehicleCondition)
         setSelected(filterVehicles)
     }
@@ -54,8 +64,7 @@ export const Car2GoContainer = () => {
 
     if (!isLoading) {
         content = (
-            <div>
-                <NavBar />
+            <div data-test="car2GoComponent">
                 <div className="car2GoCardContainer" >
                     {/* ----left section showing individual car2go data ----------- */}
                     <div className="car2GoCard">
@@ -91,7 +100,6 @@ export const Car2GoContainer = () => {
                                     : <Car2GoMap vehicles={selected} />}
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

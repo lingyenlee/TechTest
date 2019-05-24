@@ -44,6 +44,10 @@
     text-align: center;
 }
 
+.mapContainer {
+    box-shadow: 0 10px 35px rgba(50, 50, 93, 0.1), 0 2px 15px rgba(0, 0, 0, 0.07);
+}
+
 /* -----------Styling for Car2GoCard component --------------- */
 .car2GoCardBody {
     width: 270px;

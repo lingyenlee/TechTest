@@ -26,11 +26,10 @@
     flex-direction: row;
 }
 
-/* 
-.positioned {
-    position: sticky;
-    top: 0px;
-} */
+.active {
+    background-color: grey;
+}
+
 
 .material-icons.homeLink {
     font-size: 65px;

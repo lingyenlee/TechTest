@@ -5,7 +5,7 @@ import greenTaxi from "../../assets/greenCar.png"
 export const MyTaxiCard = (props) => {
 
     let content = (
-        <div className="myTaxiData">
+        <div data-test="" className="myTaxiData">
             {
                 props.vehicles.map(vehicle =>
                     <div className="myTaxiCardBody" key={vehicle.id} >

@@ -1,32 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./landingPage.css"
 import myTaxiLogo from "../../assets/mytaxi_logo.png"
 import car2goLogo from "../../assets/car2go_logo.svg"
 
-const LandingPage = () => {
+export const LandingPage = () => {
 
     return (
-        <div className="landingPageContainer">
+        <div data-test="landingPageComponent" className="landingPageContainer">
             <div className="landingText">
                 <span>Find your ride</span>
             </div>
             <div className="landingRow">
                 <div className="landingLogoContainer">
-                    <Link to="/mytaxi" >
-                        <img src={myTaxiLogo} alt="Logo of myTaxi" />
-                    </Link>
+                    <NavLink to="/mytaxi" >
+                        <img data-test="logoIMG" src={myTaxiLogo} alt="Logo of myTaxi" />
+                    </NavLink>
                 </div>
                 <div className="landingLogoContainer">
-                    <Link to="/car2go" >
-                        <img src={car2goLogo} alt="Logo of car2go" />
-                    </Link>
+                    <NavLink to="/car2go" >
+                        <img data-test="logoIMG" src={car2goLogo} alt="Logo of car2go" />
+                    </NavLink>
                 </div>
-
             </div>
         </div>
 
     )
 }
-
-export default LandingPage;

@@ -4,7 +4,7 @@ import "./car2go.css";
 //Level 1 child component of Car2GoContainer parent component
 export const Car2GoCard = (props) => {
     let content = (
-        <div className="car2GoData">
+        <div  className="car2GoData">
             {
                 props.vehicles.map(vehicle =>
                     <div className="car2GoCardBody" key={vehicle.id}>

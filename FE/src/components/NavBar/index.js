@@ -1,33 +1,33 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import myTaxiLogo from "../../assets/mytaxi_logo.png"
 import car2goLogo from "../../assets/car2go_logo.svg"
 import "./navBar.css"
 
-//Level 1 child component of both myTaxiContainer and car2goContainer components
-//reusable component
+//reusable component, appear in all components except <Landing Page /> component 
+//in app.js
 export const NavBar = () => {
     let content = (
-        <div className="navBar">
+        <div data-test="navBar" className="navBar">
             <div className="row">
                 <div className="navLogoContainer">
                     <div className="navLogo">
-                        <Link to="/mytaxi" >
-                            <img src={myTaxiLogo} alt="Logo of myTaxi" />
-                        </Link>
+                        <NavLink to="/mytaxi" activeClassName="active" >
+                            <img  data-test="logoIMG" src={myTaxiLogo} alt="Logo of myTaxi" />
+                        </NavLink>
                     </div>
                     <div className="navLogo">
-                        <Link to="/car2go" >
-                            <img src={car2goLogo} alt="Logo of car2go" />
-                        </Link>
+                        <NavLink to="/car2go">
+                            <img  data-test="logoIMG" src={car2goLogo} alt="Logo of car2go" />
+                        </NavLink>
                     </div>
                 </div>
                 <div className="homeLogo">
-                    <Link to="/" >
-                        <i className="material-icons homeLink">
+                    <NavLink exact to="/" >
+                        <i  data-test="logoIMG" className="material-icons homeLink">
                             home
                     </i>
-                    </Link>
+                    </NavLink>
                 </div>
             </div>
         </div>

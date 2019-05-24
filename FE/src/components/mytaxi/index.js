@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import "./myTaxi.css"
 import { MyTaxiCard } from "./MyTaxiCard"
-import { NavBar } from "../NavBar"
 import { MyTaxiMap } from "./MyTaxiMap";
 import { SelectVehicle } from '../SelectVehicle';
 import axios from "axios"
 
-//MyTaxiContainer Parent component - has 3 child components
+//define async fetch data function and export for testing
+export const fetchMyTaxiData = async () => {
+    try {
+        let response = await axios.get("/mytaxi/vehicles");
+        return response.data.poiList;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//MyTaxiContainer Parent component - has 2 child components
 export const MyTaxiContainer = () => {
 
     //define initial and update states
@@ -19,15 +28,16 @@ export const MyTaxiContainer = () => {
 
     //call fetch function by useEffect hook
     useEffect(() => {
-        fetchData()
+        getData()
     }, [])
 
     //function used to fetch data from server API route
-    async function fetchData() {
+
+    async function getData() {
         setIsLoading(true)
         try {
-            let result = await axios.get("/mytaxi/vehicles")
-            setVehicles(result.data.poiList)
+            const result = await fetchMyTaxiData();
+            setVehicles(result)
             setIsLoading(false)
         } catch (error) {
             console.log(error)
@@ -46,8 +56,7 @@ export const MyTaxiContainer = () => {
 
     if (!isLoading) {
         content = (
-            <div>
-                <NavBar />
+            <div data-test="myTaxiComponent">
                 <div className="myTaxiCardContainer" >
                     {/* ----left section showing individual myTaxi data ----------- */}
                     <div className="myTaxiCard">
